@@ -18,7 +18,8 @@ def result():
     query = f"SELECT * FROM production.products WHERE product_name LIKE '{nomeProdotto}%' "
     dfProdotti = pd.read_sql(query,conn)
     # Visualizzare informazioni
-    return render_template('result.html',table = dfProdotti.to_html())
+    #return render_template('result.html',table = dfProdotti.to_html())
+    return render_template('result.html', nomiColonne = dfProdotti.columns.values, dati = list(dfProdotti.values.tolist()))
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=3245, debug=True)
