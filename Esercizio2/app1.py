@@ -8,9 +8,7 @@ def home():
 
 @app.route('/result', methods=['GET'])
 def result():
-    if request.args['']:
-        return render_template('result.html')
-    if request.args.id['numeroOrdSto']:
+    if request.args['a'] == 'numeroProdCat':
         return render_template('result.html')
 
 
