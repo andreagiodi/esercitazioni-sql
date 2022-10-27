@@ -1,5 +1,7 @@
-pip install pandas pymssql matplotlib
+pip install pandas pymssql matplotlib urlopen urljoin pathlib validators
 
 https://data.world/johayes13/football-soccer-stadiums
 
 https://realpython.com/python-web-scraping-practical-introduction/
+
+http://stadiumdb.com
