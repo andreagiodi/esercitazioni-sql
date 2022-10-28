@@ -25,7 +25,7 @@ def home():
     title_index = html.find("<main>")
     start_index = title_index + len("<main>")
     end_index = html.find("</main>")
-    title = html[start_index:end_index]
+    title = html[start_index:end_index].replace("/img/", "https://stadiumdb.com/img/")
     return render_template('home.html', title=title)
 
 if __name__ == '__main__':
