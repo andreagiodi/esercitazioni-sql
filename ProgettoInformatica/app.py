@@ -14,7 +14,7 @@ import pymssql
 import matplotlib.pyplot as plt
 conn = pymssql.connect(server='213.140.22.237\SQLEXPRESS', user='giodice.andrea', password='CarloCracco1962', database='giodice.andrea')
 
-url = "http://stadiumdb.com/news/2022"
+url = "https://footballgroundmap.com/news"
 
 
 @app.route('/', methods=['GET'])
@@ -22,9 +22,9 @@ def home():
     page = urlopen(url)
     html_bytes = page.read()
     html = html_bytes.decode("utf-8")
-    title_index = html.find("<main>")
-    start_index = title_index + len("<main>")
-    end_index = html.find("</main>")
+    title_index = html.find("<section class=\"pagecontainer\">>")
+    start_index = title_index + len("<section class=\"pagecontainer\">>")
+    end_index = html.find("</section>")
     title = html[start_index:end_index]##.replace("/img/", "http://stadiumdb.com/img/")
     return render_template('home.html', title=title)
 
