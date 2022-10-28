@@ -1,3 +1,4 @@
 Si intende realizzare un sito web che tratti i dati degli stadi di calcio in tutto il mondo.
 Questi dati saranno caricati tramite un database contenente i dati necessari per avere il nome, ecc...
 Ci sarà una sezione news che viene recuperata da una sorgente(stadiumdb.com) tramite web scraping, questo
+I dati verranno trattati 
