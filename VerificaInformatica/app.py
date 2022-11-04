@@ -16,9 +16,20 @@ def infoUser():
 def info():
     query = 'SELECT * FROM Sales.Customers'
     df = pd.read_sql(query,conn)
-    if request.args['nome'] == df.first_name:
-        if request.args['cognome'] == df.last_name:
-            df1 = df['first_name'] = request.args['nome'] and request.args['cognome']['']
+
+
+    if df[df['first_name'] == request.args['nome']]['first_name'].values[0]:
+        if df[df['last_name'] == request.args['cognome']]['last_name'].values[0]:
+            df1 = df[df['first_name'] == request.args['nome']]
+        else:
+            return render_template('error.html')    
+    else:
+        return render_template('error.html')
+
+    #query1 = "SELECT * FROM Sales.customers WHERE first_name = " + request.args['nome'] + "AND WHERE last_name = " + request.args['last_name']
+    #print(query)
+    #df1 = pd.read_sql(query1,conn)
+
 
     return render_template('info.html', nomiColonne = df1.columns.values, dati = list(df1.values.tolist()), data = df1.to_html())
 

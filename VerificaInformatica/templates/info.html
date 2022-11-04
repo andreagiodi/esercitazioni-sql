@@ -1,7 +1,7 @@
 <table class="table">
     <tr>
         {% for col in nomiColonne %}
-            <th>{{col}}</th>
+            <th scope="col">{{col}}</th>
         {% endfor %}
     </tr>
     {% for record in dati %}
@@ -15,4 +15,7 @@
     {% endfor %}
 </table>
 
-{{data | safe}}
+
+
+
+
