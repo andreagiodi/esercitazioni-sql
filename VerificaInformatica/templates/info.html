@@ -1,0 +1,18 @@
+<table class="table">
+    <tr>
+        {% for col in nomiColonne %}
+            <th>{{col}}</th>
+        {% endfor %}
+    </tr>
+    {% for record in dati %}
+        <tr>
+            {% for index in range(nomiColonne|length) %}
+                <td>
+                    {{record[index]}}
+                </td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+{{data | safe}}
