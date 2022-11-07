@@ -9,19 +9,9 @@
     <title>Document</title>
 </head>
 <body>
-    <table class="table table-bordered border-primary table-striped">
-        {% for record in dati %}
-            {% for index in range(nomiColonne|length) %}
-            <tr>
-                <td>
-                    {{nomiColonne[index]}}
-                </td>
-                <td>
-                    {{record[index]}}
-                </td>
-            </tr>
-            {% endfor %}
-        {% endfor %}
-    </table>
+    <br>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <a href="/bestCustomers" class="btn btn-outline-primary" tabindex="-1" role="button">Best Customers</a>
+    </div>
 </body>
 </html>
