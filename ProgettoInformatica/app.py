@@ -12,7 +12,7 @@ from urllib.request import urlopen
 import pandas as pd
 import pymssql
 import matplotlib.pyplot as plt
-import json
+import jsonify
 conn = pymssql.connect(server='213.140.22.237\SQLEXPRESS', user='ahmed.nahim', password='xxx123##', database='ahmed.nahim')
 
 url = "https://footballgroundmap.com/news"
@@ -33,9 +33,10 @@ def home():
 def test():
     query2 = "SELECT * FROM Stadio"
     df = pd.read_sql(query2,conn)
-    return render_template('test.html', value = df.to_json(orient='records')[1:-1].replace('},{', '} {')
+    return jsonify(df.to_json())
 
-)
+    #return render_template('test.html', value = df.to_json(orient='records')[1:-1].replace('},{', '} {')
+
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=3245, debug=True)
