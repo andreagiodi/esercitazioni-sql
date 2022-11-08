@@ -13,7 +13,7 @@ def home():
 
 @app.route('/bestCustomers', methods=['GET'])
 def bestCustomers():
-    query = "SELECT top 10 sales.customers.customer_id, first_name, last_name, sum(list_price) as total_spent FROM sales.order_items inner join sales.orders on sales.order_items.order_id = sales.orders.order_id inner join sales.customers on sales.orders.customer_id = sales.customers.customer_id GROUP BY sales.customers.customer_id, sales.customers.first_name, sales.customers.last_name order by sum(list_price) desc"
+    query = "SELECT TOP 10 sales.customers.customer_id, first_name, last_name, sum(list_price * quantity) as total_spent FROM sales.order_items inner join sales.orders on sales.order_items.order_id = sales.orders.order_id inner join sales.customers on sales.orders.customer_id = sales.customers.customer_id GROUP BY sales.customers.customer_id, sales.customers.first_name, sales.customers.last_name order by sum(list_price * quantity) desc"
     df = pd.read_sql(query,conn)
     return render_template('bestCustomers.html', nomiColonne = df.columns.values, dati = list(df.values.tolist()))
 
