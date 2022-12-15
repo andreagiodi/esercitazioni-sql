@@ -15,7 +15,7 @@
 
 3. Lo sconto piu' alto effettuato su un prodotto
     ```sql
-    SELECT MAX(sales.order_items.discount)*100 FROM sales.order_items
+    SELECT MAX(sales.order_items.discount) FROM sales.order_items
     ```
     
 4. Gli ordini che sono stati gia' consegnetia
