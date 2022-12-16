@@ -171,3 +171,7 @@ NOTE
 SELECT Orders.customer_id , Orders.order_id, COUNT(*) AS t FROM Orders
 GROUP BY Orders.customer_id
     ORDER BY t DESC;
+    
+UPDATE Customers
+SET ContactName='Juan'
+WHERE Country='Mexico';
