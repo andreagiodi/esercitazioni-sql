@@ -24,6 +24,93 @@ def display_users():
     cursor.close()
     conn.close()
 
+def create_user():
+
+
+    def confirm_create_user():
+        new_nome = entry_nome.get()
+        new_cognome = entry_cognome.get()
+        new_email = entry_email.get()
+        new_username = entry_username.get()
+        new_password = entry_password.get()
+        new_nazionalita = entry_nazionalita.get()
+        new_sesso = entry_sesso.get()
+        new_admin = entry_admin.get()
+
+
+        conn = pymssql.connect(server='192.168.40.16\SQLEXPRESS', user='giodice.andrea', password='CarloCracco1962', database='giodice.andrea')
+        cursor = conn.cursor()
+
+        create_query = f"INSERT INTO Utente(Nome,Cognome,Email,Username,Password,Nazionalita,Sesso,Admin) VALUES('{new_nome}','{new_cognome}','{new_email}','{new_username}','{new_password}','{new_nazionalita}','{new_sesso}','{new_admin}')"
+        cursor.execute(create_query)
+        conn.commit()
+        cursor.close()
+        conn.close()
+        create_window.destroy()
+    conn = pymssql.connect(server='192.168.40.16\SQLEXPRESS', user='giodice.andrea', password='CarloCracco1962', database='giodice.andrea')
+    cursor = conn.cursor()
+
+    create_window = tk.Toplevel(window)
+    create_window.title("Crea Utente")
+    create_window.geometry("300x600")
+
+    label_nome = ttk.Label(create_window, text="Nome")
+    label_nome.pack()
+    entry_nome = ttk.Entry(create_window)
+    entry_nome.pack()
+
+
+    label_cognome = ttk.Label(create_window, text="Cognome")
+    label_cognome.pack()
+    entry_cognome = ttk.Entry(create_window)
+    entry_cognome.pack()
+
+        
+    label_email = ttk.Label(create_window, text="Email")
+    label_email.pack()
+    entry_email = ttk.Entry(create_window)
+    entry_email.pack()
+
+        
+    label_username = ttk.Label(create_window, text="Username")
+    label_username.pack()
+    entry_username = ttk.Entry(create_window)
+    entry_username.pack()
+
+        
+    label_password = ttk.Label(create_window, text="Password")
+    label_password.pack()
+    entry_password = ttk.Entry(create_window)
+    entry_password.pack()
+
+        
+    label_nazionalita = ttk.Label(create_window, text="Nazionalita")
+    label_nazionalita.pack()
+    entry_nazionalita = ttk.Entry(create_window)
+    entry_nazionalita.pack()
+   
+        
+    label_sesso = ttk.Label(create_window, text="Sesso")
+    label_sesso.pack()
+    entry_sesso = ttk.Entry(create_window)
+    entry_sesso.pack()
+
+        
+    label_admin = ttk.Label(create_window, text="Admin")
+    label_admin.pack()
+    entry_admin = ttk.Entry(create_window)
+    entry_admin.pack()
+
+
+    button_confirm = ttk.Button(create_window, text="Conferma Modifiche", command=confirm_create_user)
+    button_confirm.pack()
+    
+    cursor.close()
+    conn.close()
+    
+        
+
+
 
 
 def edit_user(event):
@@ -160,9 +247,10 @@ window = tk.Tk()
 window.title("Lista Utenti")
 window.geometry("500x500")
 
-#display_users()
 
 button_display = ttk.Button(window, text="Refresh", command=display_users)
+button_display.pack()
+button_display = ttk.Button(window, text="Crea Utente", command=create_user)
 button_display.pack()
 
 
